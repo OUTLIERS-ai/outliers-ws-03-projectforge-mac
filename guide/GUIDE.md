@@ -239,7 +239,7 @@ echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.zshrc
 
 **Apple Silicon or Intel** (the 2 kinds of chip a Mac can have; the Apple menu, then About This Mac, shows yours): the steps are the same on both, and both were tested.
 
-**Tried only on test Macs** (Macs GitHub rents out by the minute to run scripts, not a person's own Mac): 3 of the steps above were never tried on a real Mac. They are the developer-tools box, macOS stopping a program from opening Documents, and the question about devices on local networks.
+**Tried only on test Macs.** Every step above was tried only on test Macs (Macs GitHub rents out by the minute to run scripts, not a person's own Mac), never on a real Mac. 3 of them cannot happen on a test Mac, so they were not tried at all: the developer-tools box, macOS stopping a program from opening Documents, and the question about devices on local networks.
 
 Later, if you ask the board to start by itself when you switch on your Mac and sign in, you can check that your Mac started it: type `launchctl list | grep outliers`, and a line ending `ai.outliers.projectforge` means it is running.
 
@@ -408,6 +408,8 @@ cd ../outliers-ws-03-projectforge-mac
 python3 forge.py serve --stop
 python3 forge.py serve
 ```
+
+The board now runs in this Terminal window, and closing the window stops it. If your board starts by itself when you switch on your Mac and sign in, it goes back to running with no window the next time you sign in; until then, leave this Terminal window open.
 
 Take this download and alter it. It is yours now: change it until it matches how you work. Ashley wrote the first board in 1 day and then changed it for 3 months. His own copy has 5 tabs along the top, not 3: the board, the queue of what would be handed out next, his agents and what each has done, whether the job that starts Claude on a clock is switched on, and a map showing which of his agents hands work to which, which he moved onto this board after deciding that no second screen at a second web address was allowed to exist alongside it. It has colour themes, because he wanted the board to be easier on the eye at night. He added an 8th column, Tracking, the day he found 18 cards that only reported a status were filling the limit of 10 in progress and nothing could be handed out at all. Then the 5-field handover, after reading a card that said "handed over" and nothing else.
 

@@ -4,7 +4,7 @@
   "mac": "outliers-ws-03-projectforge-mac",
   "macgen_commit": "9c2578fc+uncommitted",
   "date": "2026-09-25",
-  "fingerprint": "e26986ced41fc7db82a147d99350b5fbdcab9f05783b83e309ee6e0a52564ab9",
+  "fingerprint": "c7775bb8a78a78b2cab04046b9c77dc409fe99045bcb1f1615bf2239a46f970d",
   "left_out_of_fingerprint": [
     ".mac-version.json",
     "guide/ProjectForge A Work Board For All Your Agents (Mac).pdf"
@@ -113,7 +113,7 @@
     {
       "path": "guide/GUIDE.md",
       "category": "changed",
-      "sha256": "9cfa63a4344b00f79dc8a451bf1bbee710b0f4ad9af89a276309aa808e57d4b1"
+      "sha256": "74ab30e741ef2cf3e01fe55b4dd008caf112ee20831c48af5a0019e5d8567003"
     },
     {
       "path": "guide/ProjectForge A Work Board For All Your Agents (Mac).pdf",
