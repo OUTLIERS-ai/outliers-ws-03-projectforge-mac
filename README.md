@@ -122,4 +122,4 @@ a throwaway folder first, so they never touch your real one.
 
 MIT licence. See `WHAT-I-STOLE.md` for where the ideas came from.
 
-This repo is made automatically from outliers-ws-03-projectforge@64afcec. To report a problem or suggest a change, use that repo, not this one.
+This repo is made automatically from outliers-ws-03-projectforge@5b307b2. To report a problem or suggest a change, use that repo, not this one.

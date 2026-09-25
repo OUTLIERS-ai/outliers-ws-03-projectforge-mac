@@ -1,10 +1,10 @@
 {
   "main": "outliers-ws-03-projectforge",
-  "main_commit": "64afcece53d80ecf65c9ee1606ab846e0b0eff97",
+  "main_commit": "5b307b2cf34ed7c958b0fdfdc6405e5501d7f99f",
   "mac": "outliers-ws-03-projectforge-mac",
   "macgen_commit": "9c2578fc+uncommitted",
   "date": "2026-09-25",
-  "fingerprint": "3d2b705d0a213cbeecc839f4d16537398dbe69cd9767d506ac69640ca16dfe96",
+  "fingerprint": "e26986ced41fc7db82a147d99350b5fbdcab9f05783b83e309ee6e0a52564ab9",
   "left_out_of_fingerprint": [
     ".mac-version.json",
     "guide/ProjectForge A Work Board For All Your Agents (Mac).pdf"
@@ -23,7 +23,7 @@
     {
       "path": "README.md",
       "category": "changed",
-      "sha256": "a2b53447c1a9ec432499c4f5e84f37a39a8212eeca9e9eebf185eb6cb6425431"
+      "sha256": "f622ac13ce0636f77333e2c3439d0fbd71a65bd0b04814cfb31f3f549b0086eb"
     },
     {
       "path": "WHAT-I-STOLE.md",
@@ -113,7 +113,7 @@
     {
       "path": "guide/GUIDE.md",
       "category": "changed",
-      "sha256": "af2d9b3862b10b3441adedada77bbab96ccc19158c56d4983132794444686158"
+      "sha256": "9cfa63a4344b00f79dc8a451bf1bbee710b0f4ad9af89a276309aa808e57d4b1"
     },
     {
       "path": "guide/ProjectForge A Work Board For All Your Agents (Mac).pdf",
@@ -192,7 +192,7 @@
     {
       "path": "guide/img/mac-before-you-start.png",
       "category": "changed",
-      "sha256": "419795217b44be4304e7d5c8082bf4a0a9344e02774cfe0844d7f6f6bd31b58b"
+      "sha256": "c95d479fdfec849c2b45ebbc050c9a4fc85efd475550ec52b9168d8082fb2d37"
     },
     {
       "path": "guide/img/mac-crm-today.png",
@@ -202,7 +202,7 @@
     {
       "path": "guide/img/mac-download.png",
       "category": "changed",
-      "sha256": "9d92c5deb75bd8f0f9a49ffbe5798ba694ea151443ca925f9948edae23e6b134"
+      "sha256": "24855f9009d82215773393debcabf62d5a91f3516afb650a867dfaa8487d829b"
     },
     {
       "path": "guide/img/mac-files-map.png",
@@ -242,7 +242,7 @@
     {
       "path": "guide/img/mac-refusals.png",
       "category": "changed",
-      "sha256": "e8d083d8ce25c71f26ecd618e20c627e903419d1c3c8e95452c5e8e5ff9c066d"
+      "sha256": "d122fd5e596aace9a84ae278d483a6d965716a6cd299c4ccf0f3999ed18b6a6b"
     },
     {
       "path": "guide/img/mac-timer-cost.png",
@@ -257,7 +257,7 @@
     {
       "path": "guide/img/mac-writes-and-never-touches.png",
       "category": "changed",
-      "sha256": "1b463da1f6362b46a28d095b48547a0af656399dcf507dcab4865fd530ab0e63"
+      "sha256": "9209db5976bde64b8a98332f9be7b59c8cc2c3528d60ca0b4af618e63b31b67a"
     },
     {
       "path": "guide/img/needs-you.png",
@@ -347,7 +347,7 @@
     {
       "path": "install.py",
       "category": "same",
-      "sha256": "87842d374fa0db539ab63c582a70583013df60c516125eb4ba305d7050d53b02"
+      "sha256": "9920e8e0d5865cd82f75fb7911be768c69e09012d7b86f4e221d47238ec6657d"
     },
     {
       "path": "tests/conftest.py",
@@ -373,6 +373,11 @@
       "path": "tests/mac/mac_server_starts_quickly.py",
       "category": "same",
       "sha256": "4342bdf17caec4f6cd2749f8b61600e50acd2975c960d40b768152790a4f91e2"
+    },
+    {
+      "path": "tests/mac/mac_signin_wording.py",
+      "category": "same",
+      "sha256": "9293199c20bbf6dcebded432c65dcaa259dbd6b917ab6ce7ef4a41c81160a837"
     },
     {
       "path": "tests/mac/mac_vault_refusal_shown.py",

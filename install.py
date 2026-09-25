@@ -198,12 +198,26 @@ def on_mac():
 
 def sign_in_words():
     """The computer's own sign-in, in the words each system uses. No
-    account of any kind is involved."""
+    account of any kind is involved. On a Mac, "log in" alone reads as
+    needing an account (Ashley, 2026-09-24), so a Mac says "sign in"."""
     if on_mac():
-        return "log in to your Mac"
+        return "sign in"
     if on_windows():
         return "sign in to Windows"
     return "sign in"
+
+
+# When the start-up file runs, in the words each system's member reads: a Mac says
+# "switch on your Mac and sign in"; the other systems keep exactly the words this
+# installer printed before (wave 6, 2026-09-25).
+_MAC = sys.platform == "darwin"
+WHEN_STARTS = ("when you switch on your Mac and sign in" if _MAC
+               else "when the computer starts")
+EACH_TIME = ("each time you switch on your Mac and sign in" if _MAC
+             else "each time you switch on the computer and sign in")
+MACHINE = "Mac" if _MAC else "computer"
+# The key a member presses to accept a suggestion: labelled Return on a Mac.
+KEY = "Return" if _MAC else "Enter"
 
 
 def ours(text):
@@ -285,7 +299,8 @@ def install_logon(port):
     if on_windows():
         return True, ("the board will start by itself, with no window, each "
                       "time you switch on the computer and sign in: %s" % path)
-    return True, ("wrote %s. To switch it on now, without logging out:\n"
+    return True, ("wrote %s. It starts the board each time you switch on your Mac\n"
+                  "     and sign in. To start it now, without signing out:\n"
                   "     launchctl load -w %s" % (path, path))
 
 
@@ -439,7 +454,7 @@ def interview(args, ask, existing):
 
     say("\n4. Managers: which agents may OPEN new cards? Everyone else may "
         "only add work reports.\n   Names separated by commas. No default: "
-        "press Enter for none (then only you open cards).")
+        "press %s for none (then only you open cards)." % KEY)
     mgr_default = args.managers if args.managers is not None else \
         ",".join(existing.get("managers", []))
     managers = split_names(ask.ask("   Managers", mgr_default))
@@ -450,7 +465,7 @@ def interview(args, ask, existing):
 
     say("\n5. Which agents' work reaches other people (posts, emails, "
         "messages)?\n   Their finished cards stop in Review for you to check. "
-        "Commas. No default: press Enter for none.")
+        "Commas. No default: press %s for none." % KEY)
     out_default = args.outward if args.outward is not None else \
         ",".join(existing.get("outward_owners", []))
     outward = split_names(ask.ask("   Agents whose work reaches other people", out_default))
@@ -480,8 +495,8 @@ def interview(args, ask, existing):
 
     if sb:
         say("\n8. A board summary note in your second brain (a markdown copy "
-            "of the board,\n   rewritten after every change). Press Enter to "
-            "write it at the path shown,\n   or type 'none' for no note.")
+            "of the board,\n   rewritten after every change). Press %s to "
+            "write it at the path shown,\n   or type 'none' for no note." % KEY)
         note_default = args.summary_note \
             if args.summary_note is not None else \
             (existing.get("summary_note") or
@@ -498,23 +513,23 @@ def interview(args, ask, existing):
 
     port = int(args.port or existing.get("port") or 3020)
 
-    say("\n9. Start the board by itself each time you switch on your computer\n"
+    say("\n9. Start the board by itself each time you switch on your %s\n"
         "   and %s? The board is a program that has to be running\n"
         "   for http://127.0.0.1:%d to answer, so if you close its window or\n"
         "   restart the computer, the board is gone until you start it again.\n"
         "   Yes writes a small file that starts it with no window at all.\n"
         "   To stop it, type  %s forge.py serve --stop  in this folder.\n"
         "   To take the file away again:  %s install.py --uninstall"
-        % (sign_in_words(), port, python_word(), python_word()))
+        % (MACHINE, sign_in_words(), port, python_word(), python_word()))
     if args.start_with_computer:
-        say("   Start by itself when the computer starts: yes")
+        say("   Start by itself %s: yes" % WHEN_STARTS)
         logon = True
     else:
-        logon = ask.offer("   Start by itself when the computer starts?",
+        logon = ask.offer("   Start by itself %s?" % WHEN_STARTS,
                           bool(existing.get("_start_at_logon", False)))
         if ask.yes:
-            say("   Start by itself when the computer starts: %s"
-                % ("yes" if logon else "no"))
+            say("   Start by itself %s: %s"
+                % (WHEN_STARTS, "yes" if logon else "no"))
 
     answers = {
         "second_brain": sb, "crm_vault": crm, "agents_dirs": agents_dirs,
@@ -591,7 +606,7 @@ def do_install(args):
     if answers["summary_note"]:
         say(f"  write   {answers['summary_note']}  (only if it does not exist)")
     if answers["_start_at_logon"] and logon_path():
-        say(f"  write   {logon_path()}  (starts the board by itself when the computer starts)")
+        say(f"  write   {logon_path()}  (starts the board by itself {WHEN_STARTS})")
     if not ask.confirm("Go ahead?"):
         say("Nothing changed.")
         return 1
@@ -866,8 +881,7 @@ def main(argv=None):
     ap.add_argument("--start-with-computer", dest="start_with_computer",
                     action="store_true",
                     help="answer yes to question 9: start the board by itself "
-                         "each time you switch on the computer and sign in "
-                         "(off unless you pass this)")
+                         "%s (off unless you pass this)" % EACH_TIME)
     # the name this setting had until 2026-09-24, still accepted so nothing
     # typed or saved earlier breaks; hidden from --help.
     ap.add_argument("--logon", dest="start_with_computer", action="store_true",

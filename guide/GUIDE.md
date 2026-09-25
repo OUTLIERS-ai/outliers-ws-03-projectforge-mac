@@ -21,7 +21,7 @@ The board has up to 8 columns. **Awaiting You** comes first, because it is the o
 
 Not every column fits on a laptop screen. When they do not, a bar under the header names every column with its number of cards; click a name and the board scrolls to that column.
 
-The Alerts and Activity panel on the right folds away too. Click **Hide** at the top of it and the columns take back the 270 pixels it was using; a **Show alerts and activity** tab appears on the right-hand edge, and clicking that brings the panel back. Both are ordinary buttons, so the Tab key reaches them and Enter works them. The board remembers which way you left it, after a refresh and the next time you open it, and the board's own 10-second refresh never puts the panel back on its own. Anything that arrives while it is folded is counted on the tab itself, as **Show alerts and activity (2 new)**, so nothing is hidden from you without saying so.
+The Alerts and Activity panel on the right folds away too. Click **Hide** at the top of it and the columns take back the 270 pixels it was using; a **Show alerts and activity** tab appears on the right-hand edge, and clicking that brings the panel back. Both are ordinary buttons, so the Tab key reaches them and Return works them. The board remembers which way you left it, after a refresh and the next time you open it, and the board's own 10-second refresh never puts the panel back on its own. Anything that arrives while it is folded is counted on the tab itself, as **Show alerts and activity (2 new)**, so nothing is hidden from you without saying so.
 
 ![The same board with the Alerts and Activity panel folded away. The Review column has come into view, and the tab on the right-hand edge brings the panel back.](img/activity-folded.png)
 
@@ -44,7 +44,7 @@ This is piece 3 of 4 in the agent workspace. Install them in order: 1 agent-flow
 
 | Word | What it means here |
 |---|---|
-| Terminal | The text window where you type commands. On a Mac it is the Terminal app: in Finder, open Applications, then Utilities, then Terminal. |
+| Terminal | The text window where you type commands. On a Mac it is the Terminal app: press Command and Space together, type Terminal, press Return. |
 | Agent | One of your Claude Code helpers, each defined by a file in your agents folder. |
 | Orchestrator | The 1 Claude Code session, started by typing `/forge-run`, that hands cards to agents and is the only agent allowed to move them. |
 | Take a card | What the orchestrator does to a card in Ready: marks it as being worked on and moves it to In Progress. |
@@ -85,7 +85,7 @@ The installer names every path below on screen and asks "Go ahead?" before it wr
 | The `/forge-run` command | `~/.claude/commands/forge-run.md` (the `.claude/commands` folder in your home folder), or your vault's `.claude/commands` if you answer `vault` at question 7. A file already there is copied to `forge-run.md.bak-<date>` first and put back when you uninstall. | No, but you choose which of the 2 folders |
 | Your agents' tool | `~/.claude/projectforge/` (the `.claude/projectforge` folder in your home folder): `forge_agent.py`, `forge_client.py` and `forge_agent.json`, and nothing else. | No |
 | The board summary note | The single file you name at question 8, inside your second brain, rewritten in full after every change. | Yes: type `none` |
-| A start-up file | A LaunchAgent: a small file, `ai.outliers.projectforge.plist`, in the `~/Library/LaunchAgents` folder, that tells your Mac to start the board each time you log in; no account of any kind is involved. | Yes: it is off unless you answer yes at question 9 |
+| A start-up file | A LaunchAgent: a small file, `ai.outliers.projectforge.plist`, in the `~/Library/LaunchAgents` folder, that tells your Mac to start the board each time you switch on your Mac and sign in; no account of any kind is involved. | Yes: it is off unless you answer yes at question 9 |
 | The optional schedule | A second LaunchAgent, `ai.outliers.projectforge.runifready.plist`, in the same `~/Library/LaunchAgents` folder. It checks the board on a timer and starts Claude only when a card is ready. Only written if you run `python3 tools/schedule.py --install`. | Yes: it is off unless you install it. `python3 tools/schedule.py --remove` or `python3 install.py --uninstall` takes it away |
 
 Everything else the board keeps sits inside the download folder: the cards, the database at `data/forge.db`, and `config.json`. The picture below lists what it never touches.
@@ -198,7 +198,7 @@ No outside code is in this download. Every line of it is ours, published under t
 - **The labels on work reports and handovers** are mostly the word list from FIPA ACL, a published standard for messages between software agents written between 1997 and 2002. INFORM, REQUEST, PROPOSE, ACCEPT, REFUSE, FAILURE and QUERY are its words; DELEGATE and ESCALATE are ours. We reuse the words only: none of that standard's code is here.
 - **The 5-field handover** is shift-handover practice, the kind hospitals and control rooms use, applied to agents. Ashley set the 5 fields on 2026-07-19 after reading a card that said "handed over" and nothing else.
 - **Check before you start the expensive part:** `tools/run_if_ready.py` counts the ready cards, with no AI, before it decides whether to start Claude at all.
-- **The small file that starts the board when you log in** is a LaunchAgent, the way macOS itself starts a program at log-in, so nothing is downloaded for it.
+- **The small file that starts the board when you switch on your Mac and sign in** is a LaunchAgent, the way macOS itself starts a program when you sign in, so nothing is downloaded for it.
 - **The link from a card to a person** uses Obsidian's own `obsidian://open?path=` address format, which Obsidian documents.
 
 While it runs, the board uses the Python standard library and nothing else: there is no package to install and nothing to keep up to date. The automatic checks use pytest (MIT licence). The pictures in this guide were taken with Playwright (Apache 2.0 licence), which you do not need in order to run the board. The full table, a row per idea, is `WHAT-I-STOLE.md` in the download folder.
@@ -223,31 +223,37 @@ While it runs, the board uses the Python standard library and nothing else: ther
 
 ### Before you start on a Mac
 
-**Python.** Install Python from https://www.python.org/downloads/macos/ (the macOS installer; we tested 3.14.7). When it finishes, double-click **Install Certificates.command** and **Update Shell Profile.command** in the Python folder inside Applications, then open a new Terminal window. Check with `python3 -c "import sys; print(sys.prefix)"`: it must print a line starting `/Library/Frameworks/Python.framework`. If it starts `/opt/homebrew` or `/usr/local/Cellar`, your Terminal uses Homebrew's Python: every command here still works, and the self-checks below use a private Python folder, which works with either.
+**Python.** Install Python from https://www.python.org/downloads/macos/ (the link labelled "macOS installer"; we tested 3.14.7). When it finishes, double-click **Install Certificates.command** and **Update Shell Profile.command** in the Python folder inside Applications, then open a new Terminal window. Check with `python3 -c "import sys; print(sys.prefix)"`: it should print a line starting `/Library/Frameworks/Python.framework`. If it starts `/opt/homebrew` or `/usr/local/Cellar`, your Terminal uses Homebrew's Python (Homebrew is an add-on installer many Mac owners use). Every command here still works. The self-checks run from a private Python folder: a folder in your home folder with its own copy of Python's add-ons, which works with python.org's Python and with Homebrew's.
 
-**The first `git`.** Your Mac may show a box asking to install the command line developer tools. Press Install, wait until it has finished, then type the `git` line again (not tested on a real Mac).
+**The first time you type `git`.** Your Mac may show a box asking to install the command line developer tools. Press Install, wait until it has finished, then type the `git` line again.
 
-**If Terminal says `claude` is not found,** type `echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.zshrc`, open a new Terminal window, and check with `claude --version`.
+**If Terminal says `claude` is not found,** type the line below. It adds the folder Claude Code is installed in to the list of folders Terminal looks in for programs. Then open a new Terminal window and check with `claude --version`.
 
-**Your second brain** is at `~/Second Brain` on a Mac (a folder in your home folder), not in Documents, because macOS can refuse a program that starts by itself access to Documents (not tested on a real Mac). If a page says "macOS refused access to" a folder, move that folder into your home folder and run `python3 install.py` again (not tested on a real Mac).
+```
+echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.zshrc
+```
 
-**"Allow Python to find devices on local networks?"** If macOS asks this the first time the page opens, press Allow. This advice is not tested on a real Mac.
+**Your second brain** is at `~/Second Brain` on a Mac, a folder in your home folder, not in Documents, because macOS can stop a program that starts by itself from opening your Documents folder. If a page says "macOS refused access to" a folder, move that folder into your home folder and run `python3 install.py` again.
 
-**Apple Silicon or Intel:** the steps are the same on both, and both were tested.
+**"Allow Python to find devices on local networks?"** If macOS asks this the first time the page opens, press Allow.
 
-A LaunchAgent (the small file that starts the board when you log in, if you ask for one) is listed by `launchctl list | grep outliers` once your Mac has started it.
+**Apple Silicon or Intel** (the 2 kinds of chip a Mac can have; the Apple menu, then About This Mac, shows yours): the steps are the same on both, and both were tested.
+
+**Tried only on test Macs** (Macs GitHub rents out by the minute to run scripts, not a person's own Mac): 3 of the steps above were never tried on a real Mac. They are the developer-tools box, macOS stopping a program from opening Documents, and the question about devices on local networks.
+
+Later, if you ask the board to start by itself when you switch on your Mac and sign in, you can check that your Mac started it: type `launchctl list | grep outliers`, and a line ending `ai.outliers.projectforge` means it is running.
 
 | You need | How to check |
 |---|---|
 | Python 3.11 or newer (tested on 3.14.7 on a Mac) | Open Terminal and type `python3 --version`. The installer refuses anything older and changes nothing: Python 3.9 stopped getting security fixes on 2025-10-31, and 3.10 gets them only until 2026-10-31 (python.org, checked 2026-09-24). |
 | Git | `git --version` |
-| Claude Code, logged in | `claude --version`. Tested on Claude Code version 2.1.280 on 2026-09-23. |
+| Claude Code, logged in to your Claude account | `claude --version`. A test Mac printed 2.1.282 (Claude Code) on 2026-09-25. |
 | Optional: your second brain vault | You know its full path, for example `/Users/<you>/Second Brain` (the `Second Brain` folder in your home folder). If you have not got one, type `none` at question 1 and everything else works the same. |
 | Your agents folder | Usually `~/.claude/agents`. |
 | Optional: your CRM vault | The folder that contains `Today.md` (your CRM's ranked list of people to contact today) and `People/`. |
 | Optional, for the tests: pytest (a program that runs the download's automatic checks) | Installed into a private Python folder with the 2 lines below the table. |
 
-For the tests, make a private Python folder once and install pytest into it (these 2 lines work whichever Python your Terminal uses):
+For the tests, make a private Python folder once and install pytest into it. These 2 lines work whichever Python your Terminal uses; the part before `&&` switches this Terminal window into the private folder, so the `python` after it is the folder's own copy:
 
 ```
 python3 -m venv ~/outliers-checks
@@ -256,12 +262,12 @@ source ~/outliers-checks/bin/activate && python -m pip install pytest
 
 You do not need Node.js (another programming tool some downloads ask for). Nothing is installed from the internet except the download itself: the board needs nothing beyond what comes with Python.
 
-![The checks, as they printed on a test Mac on 2026-09-25.](img/mac-before-you-start.png)
+![The checks, as they printed on 2026-09-25 on a test Mac (a Mac that GitHub rents out by the minute to run scripts).](img/mac-before-you-start.png)
 
 ## Install it
 
-1. Open Terminal (in Finder: Applications, then Utilities, then Terminal). It opens in your home folder, which is where all 4 downloads in this set go.
-2. Download the code and start the installer. Type the 3 lines below one at a time, pressing Enter after each:
+1. Open Terminal (press Command and Space together, type Terminal, press Return). It opens in your home folder, which is where all 4 downloads in this set go.
+2. Download the code and start the installer. Type the 3 lines below one at a time, pressing Return after each:
 
 ```
 git clone https://github.com/OUTLIERS-ai/outliers-ws-03-projectforge-mac
@@ -269,20 +275,20 @@ cd outliers-ws-03-projectforge-mac
 python3 install.py
 ```
 
-3. Answer the 9 questions. Most offer a default in square brackets; press Enter to accept it. Questions 4, 5 and 9 have no default that does anything: press Enter for nobody at 4 and 5, and for no at 9. If you run the installer a second time, each question offers your last answer instead, so type `no` at 9 to switch it off.
+3. Answer the 9 questions. Most offer a default in square brackets; press Return to accept it. Questions 4, 5 and 9 have no default that does anything: press Return for nobody at 4 and 5, and for no at 9. If you run the installer a second time, each question offers your last answer instead, so type `no` at 9 to switch it off.
    - Question 1: your second brain vault folder, **or `none` if you have not got a vault**. With `none`, questions 7 and 8 answer themselves and the board works exactly the same: the only part you lose is the summary note, which lives in a vault. The installer finds a vault by itself only once Obsidian has opened it (it looks for Obsidian's hidden `.obsidian` folder), so a new second brain shows `[none]` here: type its full path, for example `/Users/<you>/Second Brain`, putting your own user name where `<you>` is. The installer does not understand `~` at this question.
    - Question 2: your CRM vault folder, typed as a full path in the same way, or `none`.
    - Question 3: your agents folder. The installer lists every agent it finds.
-   - Question 4: which agents are **managers** (may open cards). Press Enter and only you open cards.
+   - Question 4: which agents are **managers** (may open cards). Press Return and only you open cards.
    - Question 5: which agents send work to other people. Their finished cards stop in Review.
    - Question 6: what the board calls you (default `you`). Remember it: you type it after `--actor` at the end of every terminal command that changes the board.
    - Question 7: where the `/forge-run` command goes: `user` (every Claude Code session) or `vault` (only sessions in your second brain).
-   - Question 8: the board summary note, a note in your vault that lists the whole board and is rewritten after every change: pressing Enter writes it into your vault at the path shown. Type `none` if you do not want one.
-   - Question 9: should the board start by itself each time you log in to your Mac? Press Enter for no. See step 7 below before you decide.
+   - Question 8: the board summary note, a note in your vault that lists the whole board and is rewritten after every change: pressing Return writes it into your vault at the path shown. Type `none` if you do not want one.
+   - Question 9: should the board start by itself each time you switch on your Mac and sign in? Press Return for no. See step 7 below before you decide.
 4. The installer shows every file it is about to write and asks "Go ahead?". Type `y`.
 5. When it worked you see a list of `done:` lines like this:
 
-![The end of a finished install on a test Mac, from "About to:": the files it writes, then a line for each file it has written. The 9 questions above it are cut off; at question 4 the manager content-lead was named.](img/mac-install-output.png)
+![The end of a finished install on a test Mac, from "About to:": the files it writes, then a line for each file it has written. The 9 questions above it are cut off. At question 4 (which of your agents are managers) the test named a made-up agent, content-lead.](img/mac-install-output.png)
 
 ![The same install with no Obsidian vault at all: `none` typed at question 1, and questions 7 and 8 answer themselves.](img/mac-no-vault.png)
 
@@ -290,7 +296,7 @@ python3 install.py
 
 ![A fresh board on a test Mac: empty, with the 3 first steps on the left and Awaiting You as the first column. The name under ProjectForge is the default, My AI Workforce.](img/mac-first-run.png)
 
-7. **Decide whether the board starts by itself when you log in.** The board only answers while the program is running, so closing that Terminal window, or restarting your Mac, takes the board away until you start it again. Answer yes at question 9 and the installer writes a LaunchAgent: a small file, `ai.outliers.projectforge.plist`, in the `~/Library/LaunchAgents` folder, that tells your Mac to start the board each time you log in, with no window at all. It is off unless you ask for it, and the installer shows you the exact path before writing it. The file takes effect the next time you log in; to start it now, run the `launchctl load -w` line the installer prints. To change your mind, run `python3 install.py` again and answer the other way at question 9, or take the file away with `python3 install.py --uninstall`. To switch it on from a script rather than by answering: `python3 install.py --start-with-computer` (this setting means yes at question 9). A board started this way has no window, so there is nothing to press Ctrl+C in. To stop it, open Terminal (it opens in your home folder), type `cd outliers-ws-03-projectforge-mac`, then `python3 forge.py serve --stop`. Start it again with `python3 forge.py serve` in the same folder, and check it by opening `http://127.0.0.1:3020` (or the port you chose) in your browser, where a page that loads means it is running. `launchctl list | grep outliers` lists the LaunchAgents your Mac has started.
+7. **Decide whether the board starts by itself when you switch on your Mac and sign in.** The board only answers while the program is running, so closing that Terminal window, or restarting your Mac, takes the board away until you start it again. Answer yes at question 9 and the installer writes a LaunchAgent: a small file, `ai.outliers.projectforge.plist`, in the `~/Library/LaunchAgents` folder, that tells your Mac to start the board each time you switch on your Mac and sign in, with no window at all. It is off unless you ask for it, and the installer shows you the exact path before writing it. The file takes effect the next time you sign in; until then, start the board with `python3 forge.py serve`, as in step 6. To change your mind, run `python3 install.py` again and answer the other way at question 9, or take the file away with `python3 install.py --uninstall`. To switch it on from a script rather than by answering: `python3 install.py --start-with-computer` (this setting means yes at question 9). A board started this way has no window, so there is nothing to press Ctrl+C in. To stop it, open Terminal (it opens in your home folder), type `cd outliers-ws-03-projectforge-mac`, then `python3 forge.py serve --stop`. Start it again with `python3 forge.py serve` in the same folder, and check it by opening `http://127.0.0.1:3020` (or the port you chose) in your browser, where a page that loads means it is running. `launchctl list | grep outliers` lists the LaunchAgents your Mac has started.
 8. The board opens empty, with 3 steps on the left. Your first card: click "+ Add card", which sits **at the top of every column, under its heading**, and use the one under Ready. Because there is no project yet, the form asks you to name one, and the card and the project are made together.
 
 ![A fresh board with the first card being added (the steps panel on the left and the header are cropped off).](img/mac-first-card.png)
@@ -300,7 +306,7 @@ python3 install.py
 
 > **Tip:** Want to see a full board first? Run `python3 tools/demo_board.py --out demo --serve` and open `http://127.0.0.1:3029`. It builds a separate demo board of made-up work, with a made-up CRM vault, and does not touch your real one.
 
-> **Note:** If a file called `forge-run.md` already exists in your Claude Code commands folder (`~/.claude/commands`), the installer copies it to `forge-run.md.bak-<date>` before replacing it. Running the installer a second time with the same answers changes nothing. `python3 install.py --uninstall` asks you to type y, then stops the board if it is running, takes away the LaunchAgent that starts the board when you log in (if you asked for one), takes the command out, moves the agents' tool into a folder named `projectforge.removed-<date>`, puts your own old command back (even if you installed twice), and leaves your board data alone. It only takes away a start-up file it wrote itself: a file of the same name that you or another program put there is left alone and named on screen. It never edits your CLAUDE.md or your agent files. The lines you pasted in at step 9 still tell your agents to run `forge_agent.py`, which it has just moved aside, so it prints the file and the number of each line to take out, for example `line 7: Agent work is recorded on the ProjectForge board. The tool is`. It also lists any line in an agent's file that names `forge_agent.py`. Open each file it names, delete those lines and the blank lines between them, and save it. **To remove the whole download** after that, delete the `outliers-ws-03-projectforge-mac` folder. Your cards and their history are in `data/forge.db` inside it, so copy that file first if you want to keep them.
+> **Note:** If a file called `forge-run.md` already exists in your Claude Code commands folder (`~/.claude/commands`), the installer copies it to `forge-run.md.bak-<date>` before replacing it. Running the installer a second time with the same answers changes nothing. `python3 install.py --uninstall` asks you to type y, then stops the board if it is running, takes away the LaunchAgent that starts the board when you switch on your Mac and sign in (if you asked for one), takes the command out, moves the agents' tool into a folder named `projectforge.removed-<date>`, puts your own old command back (even if you installed twice), and leaves your board data alone. It only takes away a start-up file it wrote itself: a file of the same name that you or another program put there is left alone and named on screen. It never edits your CLAUDE.md or your agent files. The lines you pasted in at step 9 still tell your agents to run `forge_agent.py`, which it has just moved aside, so it prints the file and the number of each line to take out, for example `line 7: Agent work is recorded on the ProjectForge board. The tool is`. It also lists any line in an agent's file that names `forge_agent.py`. Open each file it names, delete those lines and the blank lines between them, and save it. **To remove the whole download** after that, delete the `outliers-ws-03-projectforge-mac` folder. Your cards and their history are in `data/forge.db` inside it, so copy that file first if you want to keep them.
 
 ## Using it day to day
 
@@ -330,7 +336,7 @@ forge="$HOME/.claude/projectforge/forge_agent.py"
 python3 $forge open --agent content-lead --dept content --project "Content week 39" --title "Newsletter" --assignee writer-bot
 ```
 
-The first line saves the tool's full path under the short name `forge` (`$HOME` is your home folder), so the second line fits on 1 line. Type the name of 1 of your managers after `--agent` (question 4 at install). If you pressed Enter there, you have no managers, and the board answers `refused: content-lead is a worker and may not open a card`. That is the first rule doing its job; open the card on the board instead, or re-run `python3 install.py` and name a manager. The full list of its commands is under "Every command and setting" below.
+The first line saves the tool's full path under the short name `forge` (`$HOME` is your home folder), so the second line fits on 1 line. Type the name of 1 of your managers after `--agent` (question 4 at install). If you pressed Return there, you have no managers, and the board answers `refused: content-lead is a worker and may not open a card`. That is the first rule doing its job; open the card on the board instead, or re-run `python3 install.py` and name a manager. The full list of its commands is under "Every command and setting" below.
 
 **Letting the agents work.** When cards are sitting in Ready, type `/forge-run` in Claude Code (or `/forge-run 3` to run at most 3 cards). The orchestrator:
 
@@ -376,7 +382,32 @@ Each alert names its card, and under it sits an "Open this card" link that takes
 
 ## Fit it to your own AI system
 
-**The safe way.** Change a practice copy, never the board you use every day. Open Terminal (it opens in your home folder), type `cd outliers-ws-03-projectforge-mac`, then `python3 forge.py make-copy ../projectforge-practice` (`..` means the folder above this one, your home folder). That makes a new folder, `projectforge-practice`, beside the download. The copy has its own copy of today's cards in its own `data/forge.db`, and its board answers on the next free port, 3021 if nothing else has it, so both boards can run at once. Nothing you do in the copy reaches your everyday board: your agents and `/forge-run` keep writing to the everyday one, and the copy writes no summary note into your vault, has no start-up file and no schedule. Then type `cd ../projectforge-practice` and `python3 forge.py serve`, and open the address it prints. `python3 forge.py serve --stop`, typed in the copy's folder, stops only the copy's board. Do not run `python3 install.py` in the copy: it refuses, because it would point your agents at the copy. Run the checks in the copy after every change with `source ~/outliers-checks/bin/activate && python -m pytest -q` (the private Python folder from "Before you start") and expect `157 passed, 1 skipped` (the skipped check looks at a file only a PC uses). Any other answer means the change broke something, so put it back before you go on. Read "Every command and setting" near the end of this guide before you ask Claude Code for a change, because much of what you want is already a setting in `config.json`. Be most careful with `engine/db.py`: a mistake there can damage cards, and in the copy those are only copies. When the copy does what you want, copy the files you changed (never `data/` or `config.json`) into the download folder. Then stop the everyday board and start it again: type `cd ../outliers-ws-03-projectforge-mac`, then `python3 forge.py serve --stop`, then `python3 forge.py serve`.
+**The safe way.** Change a practice copy, never the board you use every day. Open Terminal (it opens in your home folder) and type these 4 lines, 1 at a time:
+
+```
+cd outliers-ws-03-projectforge-mac
+python3 forge.py make-copy ../projectforge-practice
+cd ../projectforge-practice
+python3 forge.py serve
+```
+
+The second line makes a new folder, `projectforge-practice`, beside the download (`..` means the folder above this one, your home folder). The copy has its own copy of today's cards in its own `data/forge.db`, and its board answers on the next free port, 3021 if nothing else has it, so both boards can run at once. The last line starts the copy's board and prints its address: open that address in your browser. Nothing you do in the copy reaches your everyday board: your agents and `/forge-run` keep writing to the everyday one, and the copy writes no summary note into your vault, has no start-up file and no schedule. Do not run `python3 install.py` in the copy: it refuses, because it would point your agents at the copy.
+
+After every change, stop the copy's board with Ctrl+C and run the checks in the copy's folder, with the private Python folder from "Before you start":
+
+```
+source ~/outliers-checks/bin/activate && python -m pytest -q
+```
+
+Expect `157 passed, 1 skipped` (the skipped check looks at a file only a PC uses). Any other answer means the change broke something, so put it back before you go on. Read "Every command and setting" near the end of this guide before you ask Claude Code for a change, because much of what you want is already a setting in `config.json`. Be most careful with `engine/db.py`: a mistake there can damage cards, and in the copy those are only copies.
+
+When the copy does what you want, copy the files you changed (never `data/` or `config.json`) into the download folder. Then stop the everyday board and start it again:
+
+```
+cd ../outliers-ws-03-projectforge-mac
+python3 forge.py serve --stop
+python3 forge.py serve
+```
 
 Take this download and alter it. It is yours now: change it until it matches how you work. Ashley wrote the first board in 1 day and then changed it for 3 months. His own copy has 5 tabs along the top, not 3: the board, the queue of what would be handed out next, his agents and what each has done, whether the job that starts Claude on a clock is switched on, and a map showing which of his agents hands work to which, which he moved onto this board after deciding that no second screen at a second web address was allowed to exist alongside it. It has colour themes, because he wanted the board to be easier on the eye at night. He added an 8th column, Tracking, the day he found 18 cards that only reported a status were filling the limit of 10 in progress and nothing could be handed out at all. Then the 5-field handover, after reading a card that said "handed over" and nothing else.
 
@@ -392,7 +423,7 @@ The download includes `adapters/crm_today.py`. It reads the ranked table on `Tod
 
 `[[People/Dan Pike]]` and `[[Dan Pike|Dan]]` work too. Run it with `--dry-run` first (a practice run that shows what it would do and writes nothing): "(no person note found)" means the name does not match a file in `People/`. Running it again updates the same cards instead of copying them. It never sends anything. On the card, and in the summary note, the person's name opens their note in Obsidian. To hand these cards to a research agent instead of you, set `crm_today.owner` in config.json.
 
-![The Today.md table, a dry run, a real run, and a second run that copies nothing, on a test Mac. Made-up people.](img/mac-crm-today.png)
+![First `cat` prints the CRM's Today.md in Terminal; then a dry run (it shows what it would add and writes nothing), a real run that adds 2 cards, and a second run that adds no second card for the same person. On a test Mac, with made-up people.](img/mac-crm-today.png)
 
 ![A CRM card for Dan Pike, a made-up person: the link opens his note in the CRM vault.](img/card-crm.png)
 
@@ -441,7 +472,7 @@ Add a "goal" field to cards in engine/db.py (with a migration like the others). 
 ### 8. The optional schedule, set up safely
 
 ```
-Run python3 tools/schedule.py --print and explain each line to me. Then set schedule.model in config.json to "sonnet" (Anthropic's mid-priced model) and schedule.every_min to 120. List the tools my agents need for their work that are not in allowed_tools() in tools/run_if_ready.py, and suggest what to put in schedule.extra_allowed_tools. Do not run python3 tools/schedule.py --install until I say yes.
+Run python3 tools/schedule.py --print and explain each line to me. Then set schedule.model in config.json to "sonnet" (Anthropic's mid-priced model) and schedule.every_min to 120. List the tools my agents need for their work that are not in allowed_tools() in tools/run_if_ready.py, and suggest what to put in schedule.extra_allowed_tools. Do not install the schedule (python3 tools/schedule.py --install) until I say yes.
 ```
 
 ### 9. Limits per agent
@@ -463,7 +494,7 @@ The whole download at a glance, then every command. Anything that changes the bo
 | Command | What it does |
 |---|---|
 | `serve [--port 3020]` | Opens the web board and runs the health check every 10 minutes. |
-| `serve --stop` | Stops the board that belongs to this folder, whichever port it is on and whether you started it yourself or it started by itself when you switched on the computer. Type it inside the download folder. Use this when there is no window to press Ctrl+C in. It reads `data/forge.pid`, the small file the running board writes with its own process number (the number your computer gives every program while it runs) and port, then asks that address who it is: unless the answer is this folder's own board, it stops nothing and says so, so a record left over from an earlier board, or copied from another folder, can never end another program. |
+| `serve --stop` | Stops the board that belongs to this folder, whichever port it is on and whether you started it yourself or it started by itself when you switched on your Mac and signed in. Type it inside the download folder. Use this when there is no window to press Ctrl+C in. It reads `data/forge.pid`, the small file the running board writes with its own process number (the number your computer gives every program while it runs) and port, then asks that address who it is: unless the answer is this folder's own board, it stops nothing and says so, so a record left over from an earlier board, or copied from another folder, can never end another program. |
 | `make-copy <folder> [--port 3021]` | Makes a practice copy to change safely: the code, a copy of today's cards, and its own port, with no summary note, no start-up file and no schedule. See "The safe way" under "Fit it to your own AI system". |
 | `daemon [--port] [--interval 10]` | The same as serve, except you set how many minutes there are between health checks: `--interval 10` means every 10 minutes. |
 | `list` | Open cards in the terminal. |
@@ -497,9 +528,9 @@ Results are completed, progressed, blocked, failed and needs-review. `--intent` 
 | `handoff --card --from --to --done --decisions --state --next-first --warnings [--context]` | Any agent. Makes the receiver the owner. |
 | `comment --card --agent --text` | Any agent. |
 | `escalate --card --agent --note` | Any agent. Marks the card NEEDS YOU, counts it in the header, moves it into Awaiting You and raises an alert. |
-| `open` `--agent <manager>` `--dept` `--project` `--title` `[--assignee]` `[--status backlog/ready]` `[--context]` `[--notes]` `[--crm-person]` | Managers only. A new project name makes a new project. |
+| `open`, with `--agent <manager>` `--dept` `--project` `--title` `[--assignee]` `[--status backlog/ready]` `[--context]` `[--notes]` `[--crm-person]` | Managers only. A new project name makes a new project. |
 
-**Other scripts.** `install.py` also takes every answer as a setting, for scripts: `--yes`, `--second-brain`, `--crm`, `--agents-dir`, `--managers`, `--outward`, `--name`, `--commands`, `--summary-note`, `--port`, `--start-with-computer` (yes at question 9: start the board by itself when you log in), and `--uninstall`. `--yes` takes the default for every question except question 9, which stays off unless you add `--start-with-computer`: no script can put a LaunchAgent on your Mac without being told to. `tools/run_if_ready.py [--dry-run]` checks and starts Claude only if needed. `tools/schedule.py --print / --install [--every 60, in minutes] / --remove` shows, switches on or switches off the optional schedule (a LaunchAgent that launchd, the Mac's built-in scheduler, runs on a timer). `tools/demo_board.py --out demo [--serve] [--port 3029]` builds the demo. `adapters/forge_client.py` lets your own programs send cards to the board over its web address.
+**Other scripts.** `install.py` also takes every answer as a setting, for scripts: `--yes`, `--second-brain`, `--crm`, `--agents-dir`, `--managers`, `--outward`, `--name`, `--commands`, `--summary-note`, `--port`, `--start-with-computer` (yes at question 9: start the board by itself when you switch on your Mac and sign in), and `--uninstall`. `--yes` takes the default for every question except question 9, which stays off unless you add `--start-with-computer`: no script can put a LaunchAgent on your Mac without being told to. `tools/run_if_ready.py [--dry-run]` checks and starts Claude only if needed. `tools/schedule.py --print / --install [--every 60, in minutes] / --remove` shows, switches on or switches off the optional schedule (a LaunchAgent that launchd, the Mac's built-in scheduler, runs on a timer). `tools/demo_board.py --out demo [--serve] [--port 3029]` builds the demo. `adapters/forge_client.py` lets your own programs send cards to the board over its web address.
 
 **Settings in `config.json`.**
 
@@ -515,11 +546,11 @@ Results are completed, progressed, blocked, failed and needs-review. `--intent` 
 | `schedule` | `every_min` (how many minutes between checks), `model` (which Claude model the unattended run uses), `extra_allowed_tools` (extra commands that run may use), and `claude_path` (where Claude is installed, saved for you when you install the schedule). |
 | `summary_note`, `second_brain`, `crm_vault`, `port`, `db_path` | Folder paths, the board's port and its database file. |
 
-**The board itself.** Search box and department buttons filter every tab. 5 colour themes (Command Deck, Synthwave, Terminal, Paper and Minimal) sit in the menu at the top. Drag a card between columns, or up and down inside a column; dragging a card that an agent is still working on into Done asks first. A card has tags, a due date, a priority, notes, a checklist and an archive button. The **×** on an alert dismisses it. Keyboard users can Tab to a card and press Enter to open it.
+**The board itself.** Search box and department buttons filter every tab. 5 colour themes (Command Deck, Synthwave, Terminal, Paper and Minimal) sit in the menu at the top. Drag a card between columns, or up and down inside a column; dragging a card that an agent is still working on into Done asks first. A card has tags, a due date, a priority, notes, a checklist and an archive button. The **×** on an alert dismisses it. Keyboard users can Tab to a card and press Return to open it.
 
 **The web address, for your own programs.** The board answers on `http://127.0.0.1:3020/api/...`. Reads: `state`, `events`, `agents`, `alerts`, `metrics`, `cards`, `next`, `waiting`, `task/<card>`. Writes (in JSON, the standard text format programs use to swap data; only from your own computer, and each must name an `actor`): `open`, `pass`, `handoff`, `federate` (another program sending cards in), `task/add`, `task/move`, `task/update`, `task/tags`, `task/checklist`, `task/comment`, `task/archive`, `task/reorder`, `project/add`, `project/update`, `alert/dismiss`, and the orchestrator's `intake`, `dispatch`, `commit`.
 
-**Also in the folder:** `README.md`, `WHAT-I-STOLE.md` (the ideas this borrows and their licences), `LICENSE` (MIT: anyone may use and change the code), `guide/` (this guide and its pictures), and `tests/` (158 automatic checks that the board works; on a Mac 157 pass and 1 is skipped, because it looks at a file only a PC uses. Run them with `source ~/outliers-checks/bin/activate && python -m pytest -q`, after making the private Python folder in "Before you start"; they never need a particular port to be free, so they pass while the board is running, and every one of them points your home folder at a throwaway folder first, so none of them touches your real one).
+**Also in the folder:** `README.md`, `WHAT-I-STOLE.md` (the ideas this borrows and their licences), `LICENSE` (MIT: anyone may use and change the code), `guide/` (this guide and its pictures), and `tests/` (158 automatic checks that the board works: 157 pass and 1 is skipped, because that 1 looks at a file only a PC uses. Run them with `source ~/outliers-checks/bin/activate && python -m pytest -q`, after making the private Python folder in "Before you start"; they never need a particular port to be free, so they pass while the board is running, and every one of them points your home folder at a throwaway folder first, so none of them touches your real one).
 
 ## When it goes wrong
 
@@ -535,9 +566,9 @@ These are the real faults from Ashley's build and from testing this download, wi
 | "the following arguments are required: --actor" | Every `forge.py` change must say who made it. | Add `--actor` and your board name, for example `--actor you`. |
 | "no project with the id ..." | A wrong project id. | `python3 forge.py projects` lists them. |
 | "unknown department 'marketing'" | Only the departments in config.json are accepted. | Use content, sales, delivery or operations, or add a department to config.json. |
-| "This board is already running at http://127.0.0.1:3020" | Your board is already open. Most often it started by itself when you logged in, and it has no window for you to notice. | Open that address in your browser: that is your board. To start it afresh, run `python3 forge.py serve --stop` in the download folder, then `python3 forge.py serve`. |
+| "This board is already running at http://127.0.0.1:3020" | Your board is already open. Most often it started by itself when you switched on your Mac and signed in, and it has no window for you to notice. | Open that address in your browser: that is your board. To start it afresh, run `python3 forge.py serve --stop` in the download folder, then `python3 forge.py serve`. |
 | "Port 3020 is already in use by a ProjectForge board from another folder" or "... by another program" | A practice copy, or a program that is not the board, has the port. `serve --stop` typed here will not stop it, because it is not this folder's board. | Run this board on another port: `python3 forge.py serve --port 3021`, and visit `http://127.0.0.1:3021`. Or stop the practice copy from its own folder. |
-| The board is running but you cannot find its window, and Ctrl+C is not an option. | You answered yes at question 9, so it started by itself, with no window, when you logged in. That is what you asked for. | Open Terminal, type `cd outliers-ws-03-projectforge-mac`, then `python3 forge.py serve --stop`. To stop it happening every time, run `python3 install.py` again and answer no at question 9, or `python3 install.py --uninstall`. |
+| The board is running but you cannot find its window, and Ctrl+C is not an option. | You answered yes at question 9, so it started by itself, with no window, when you switched on your Mac and signed in. That is what you asked for. | Open Terminal, type `cd outliers-ws-03-projectforge-mac`, then `python3 forge.py serve --stop`. To stop it happening every time, run `python3 install.py` again and answer no at question 9, or `python3 install.py --uninstall`. |
 | `serve --stop` says the board on record is not answering. | The board was ended some other way (Ctrl+C, or your Mac switched off), or the folder was copied from another one, so `data/forge.pid` names a process number that is gone or belongs to another folder's board. | Nothing is wrong. It stops nothing, clears the record, and says so. It never ends a program unless that program answers and calls itself this folder's board. |
 | Your vault note was overwritten by a demo board. | During research on 2026-09-22, a copied settings file still pointed at a real vault note. It was restored from git. | The demo board never writes a summary note, and the installer shows the note's path before writing it. |
 | The orchestrator reports "bad json". | In the original, a long dash (—, called an em dash) typed into a command's text broke the request. | `/forge-run` now uses `forge.py` commands instead of web requests. Still type hyphens, not em dashes. |
@@ -550,7 +581,7 @@ These are the real faults from Ashley's build and from testing this download, wi
 | The CRM reader stops with an error about a byte it cannot decode. | Fixed on 2026-09-23. `Today.md` had been saved in an older text format that some older PC programs still write. | Nothing crashes now. An accent or a pound sign in a name may come back wrong on the card, for example "Renee Cafe" as "Ren?e Caf?"; save `Today.md` as UTF-8 to fix the spelling. |
 | The uninstall says it could not move a folder aside. | Something has a file in `~/.claude/projectforge` open: an editor, a Terminal window sitting in that folder, or a running agent. | Close it and run `python3 install.py --uninstall` again. Nothing was changed, so it is safe to repeat. |
 | "the summary note was not written: the folder ... is not there". | Your vault has been renamed or moved, or a vault kept in a cloud folder has not synced yet. | Check the folder exists, then run `python3 forge.py mirror`. The board never makes a folder inside your vault, because it used to make an empty folder and report success. |
-| "macOS refused access to" a folder, in the summary job's message or as an alert on the board. | macOS stopped the board reading that folder. On a Mac any refusal to read a folder is reported this way. | Move the vault out of Documents into your home folder, for example `~/Second Brain`, and run `python3 install.py` again (not tested on a real Mac). |
+| "macOS refused access to" a folder, in the summary job's message or as an alert on the board. | macOS stopped the board reading that folder. Every refusal to read a folder is reported this way. | Move the vault out of Documents into your home folder, for example `~/Second Brain`, and run `python3 install.py` again. Not tested on a real Mac: the test Macs never refuse a folder. |
 | A card carries a red NEEDS YOU label. | An agent ran `escalate`: it cannot finish without a person. The card has moved into Awaiting You. | Read the note in the Activity list or on the card, do the part only you can do, then move the card on. Moving it out of Awaiting You takes the label off. |
 
 ![What starting the board a second time says on a test Mac: it names the board that is already running and how to stop it.](img/mac-port-in-use.png)
@@ -559,7 +590,7 @@ These are the real faults from Ashley's build and from testing this download, wi
 
 The code: https://github.com/OUTLIERS-ai/outliers-ws-03-projectforge-mac
 
-Download and install with these 3 lines, pressing Enter after each:
+Download and install with these 3 lines, pressing Return after each:
 
 ```
 git clone https://github.com/OUTLIERS-ai/outliers-ws-03-projectforge-mac
