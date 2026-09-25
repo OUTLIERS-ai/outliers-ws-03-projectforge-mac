@@ -1,0 +1,14 @@
+{
+  "slug": "example-agent",
+  "dept": "content",
+  "role": "worker",
+  "autonomy_tier": "supervised",
+  "scopes": {
+    "depts": [
+      "content"
+    ],
+    "statuses": []
+  },
+  "max_activations_per_day": 5,
+  "note": "Copy this file to cards/<agent-name>.json (for example cards/writer-bot.json) and set slug to the same name. The FILE NAME decides which agent is limited. The orchestrator will then refuse to hand that agent work outside the listed departments, or more than 5 times a day. An agent with no file has no limits."
+}

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="command-deck">
+<head>
+<meta charset="utf-8">
+<title>ProjectForge</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="favicon.png">
+<link rel="stylesheet" href="style.css?v=ws03d">
+</head>
+<body>
+<header>
+  <div class="brand">
+    <div class="logo">⬢</div>
+    <div>
+      <h1>ProjectForge</h1>
+      <div class="workspace" id="workspace" title="Change this name: workspace in config.json"></div>
+    </div>
+  </div>
+  <button id="new-project" class="new-project" title="Make a new project. Every card lives inside a project.">+ Project</button>
+  <div class="pills" id="dept-pills"></div>
+  <div class="controls">
+    <input id="search" placeholder="Search cards…" autocomplete="off">
+    <select id="theme" title="Theme" aria-label="Theme">
+      <option value="command-deck">⬢ Command Deck</option>
+      <option value="synthwave">◈ Synthwave</option>
+      <option value="terminal">⌁ Terminal</option>
+      <option value="paper">▤ Paper · light</option>
+      <option value="minimal">○ Minimal</option>
+    </select>
+    <div class="toggle">
+      <button data-v="board" class="active">Board</button>
+      <button data-v="queue">Queue</button>
+      <button data-v="agents">Agents</button>
+    </div>
+    <button id="help" class="help" title="Who may do what on this board" aria-label="Who may do what">?</button>
+  </div>
+  <div class="meta">
+    <div class="stat"><span id="stat-projects">–</span><label>projects</label></div>
+    <div class="stat"><span id="stat-open">–</span><label>open</label></div>
+    <button class="stat warn" id="stat-waiting-btn" title="Jump to the Awaiting You column"><span id="stat-waiting">–</span><label>awaiting you</label></button>
+    <button class="stat bad" id="stat-refused-btn" title="Show today's refused changes in Activity"><span id="stat-refused">–</span><label>refused today</label></button>
+    <button class="stat needs" id="stat-needs-btn" title="Cards where an agent has asked for a person. They wait in Awaiting You."><span id="stat-needs">–</span><label>needs you</label></button>
+    <div class="stat alert"><span id="stat-alerts">–</span><label>alerts</label></div>
+  </div>
+</header>
+<div id="refresh-state" class="hidden"></div>
+<nav id="col-jump" class="hidden" aria-label="Jump to a column"></nav>
+
+<main>
+  <div id="board"></div>
+  <aside id="activity">
+    <div class="panel-head fold-head">
+      <h2>Alerts and Activity</h2>
+      <button id="activity-fold" class="fold-btn" aria-controls="activity"
+              aria-expanded="true"
+              title="Hide the alerts and activity panel and give the board columns the space">Hide</button>
+    </div>
+    <div id="alerts-panel">
+      <div class="panel-head">
+        <h2>Alerts <span id="alerts-last" class="last-check"></span></h2>
+        <button id="alerts-close" title="Close alerts panel" aria-label="Close alerts panel">×</button>
+      </div>
+      <div id="alerts"></div>
+    </div>
+    <button id="alerts-reopen" class="hidden" title="Show alerts panel">▸ Alerts <span id="alerts-reopen-count"></span></button>
+    <h2 style="margin-top:20px">Activity</h2>
+    <button id="refused-filter" class="linkish">show refusals only</button>
+    <div id="events"></div>
+  </aside>
+  <button id="activity-show" class="hidden" aria-controls="activity"
+          aria-expanded="false"
+          title="Show the alerts and activity panel">Show alerts and activity <span id="activity-new"></span></button>
+</main>
+
+<div id="toast" class="hidden"></div>
+
+<div id="modal-backdrop" class="hidden">
+  <div id="modal">
+    <button id="modal-close">×</button>
+    <div id="modal-body"></div>
+  </div>
+</div>
+
+<script src="app.js?v=ws03d"></script>
+</body>
+</html>

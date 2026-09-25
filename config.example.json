@@ -1,0 +1,102 @@
+{
+  "workspace": "My AI Workforce",
+  "human": "you",
+  "orchestrator": "orchestrator",
+  "managers": [
+    "content-lead"
+  ],
+  "agents": [
+    "content-lead",
+    "writer-bot",
+    "research-bot"
+  ],
+  "outward_owners": [
+    "social-poster"
+  ],
+  "port": 3020,
+  "db_path": "data/forge.db",
+  "second_brain": "C:/Users/<you>/Documents/Second Brain",
+  "crm_vault": "C:/Users/<you>/Documents/CRM",
+  "agents_dirs": [
+    "C:/Users/<you>/.claude/agents"
+  ],
+  "summary_note": "C:/Users/<you>/Documents/Second Brain/ProjectForge Board.md",
+  "departments": [
+    {
+      "id": "content",
+      "name": "Content",
+      "lead": "",
+      "color": "#ff3c00"
+    },
+    {
+      "id": "sales",
+      "name": "Sales",
+      "lead": "",
+      "color": "#3ccf6e"
+    },
+    {
+      "id": "delivery",
+      "name": "Delivery",
+      "lead": "",
+      "color": "#5b8def"
+    },
+    {
+      "id": "operations",
+      "name": "Operations",
+      "lead": "",
+      "color": "#b06bff"
+    }
+  ],
+  "hygiene": {
+    "check_every_min": 10,
+    "stale_days": 5,
+    "blocked_days": 3,
+    "due_soon_days": 2,
+    "done_archive_days": 14,
+    "dispatch_ttl_min": 45,
+    "wip_limits": {
+      "in_progress": 10,
+      "review": 8,
+      "awaiting_you": 10
+    }
+  },
+  "intake": {
+    "auto_pickup": true,
+    "hold_tags": [
+      "hold",
+      "someday",
+      "icebox",
+      "parked"
+    ],
+    "routing": [
+      {
+        "match": [
+          "podcast"
+        ],
+        "agent": "podcast-bot"
+      },
+      {
+        "match": [
+          "thumbnail"
+        ],
+        "agent": "design-bot"
+      }
+    ]
+  },
+  "crm_today": {
+    "enabled": false,
+    "owner": ""
+  },
+  "federate_sources": [
+    "crm-today"
+  ],
+  "schedule": {
+    "installed": false,
+    "every_min": 60,
+    "model": "",
+    "extra_allowed_tools": []
+  },
+  "orchestrator_cwd": "",
+  "command_path": "C:/Users/<you>/.claude/commands/forge-run.md",
+  "adapter_dir": "C:/Users/<you>/.claude/projectforge"
+}

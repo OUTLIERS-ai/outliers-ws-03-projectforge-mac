@@ -1,0 +1,473 @@
+{
+  "main": "outliers-ws-03-projectforge",
+  "main_commit": "64afcece53d80ecf65c9ee1606ab846e0b0eff97",
+  "mac": "outliers-ws-03-projectforge-mac",
+  "macgen_commit": "9c2578fc+uncommitted",
+  "date": "2026-09-25",
+  "fingerprint": "3d2b705d0a213cbeecc839f4d16537398dbe69cd9767d506ac69640ca16dfe96",
+  "left_out_of_fingerprint": [
+    ".mac-version.json",
+    "guide/ProjectForge A Work Board For All Your Agents (Mac).pdf"
+  ],
+  "files": [
+    {
+      "path": ".gitignore",
+      "category": "same",
+      "sha256": "ee780c2d1db55e40db6b57dd4a34b7a958653f696d921caffc51883be2ddf62e"
+    },
+    {
+      "path": "LICENSE",
+      "category": "same",
+      "sha256": "552102802d3c6b6499f87a4ad264696546b9a1dd03b69ae98f442412370e4ef8"
+    },
+    {
+      "path": "README.md",
+      "category": "changed",
+      "sha256": "a2b53447c1a9ec432499c4f5e84f37a39a8212eeca9e9eebf185eb6cb6425431"
+    },
+    {
+      "path": "WHAT-I-STOLE.md",
+      "category": "same",
+      "sha256": "78bc5965c2dae835659f3a5062e66ff640c7006015414c7e4a9d646fd47070e2"
+    },
+    {
+      "path": "adapters/crm_today.py",
+      "category": "same",
+      "sha256": "32c50efc2046119dafc405ae66b21466b103324f3e57702a6be1eb8d31ac0c9d"
+    },
+    {
+      "path": "adapters/forge_agent.py",
+      "category": "same",
+      "sha256": "637d6c2fe41a23765ca5a487e2176a8a665079c10829922e1ceb6ae14f978f80"
+    },
+    {
+      "path": "adapters/forge_client.py",
+      "category": "same",
+      "sha256": "7b9245b9b7c9b9565faed7a9039b450b171bf422ab38c2dac76f01585f93fd34"
+    },
+    {
+      "path": "cards/example-agent.json.example",
+      "category": "same",
+      "sha256": "7be32ecaff4fcf7d0de7305d624dbad64773e5e5535e66eee2cd7546c514938a"
+    },
+    {
+      "path": "commands/forge-run.md",
+      "category": "same",
+      "sha256": "9737b506f6b11de0c5ebbfa96e5a4d6e24a2ac67d8e2e49c3fc51bcdcf44dd20"
+    },
+    {
+      "path": "config.example.json",
+      "category": "same",
+      "sha256": "96247ee4848f9928d0dcbddd5e04f5699b357ef5badae2b470aacfb9b4a20e96"
+    },
+    {
+      "path": "engine/__init__.py",
+      "category": "same",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "engine/cards.py",
+      "category": "same",
+      "sha256": "1f6ba4d229b6445a91b51374f074489b242db92892d0a2d5f6e09244ec431bfb"
+    },
+    {
+      "path": "engine/config.py",
+      "category": "same",
+      "sha256": "145ed969151331beedf1f80f16f2eb04e1b2c8a86aff2eb9d5866fc1c5277b5e"
+    },
+    {
+      "path": "engine/db.py",
+      "category": "same",
+      "sha256": "95b5a75b64e2ea440c15e1be1520fae682572b087acf50c8b20428c2c0256ef8"
+    },
+    {
+      "path": "engine/hygiene.py",
+      "category": "same",
+      "sha256": "86b566563bab0d0f4152d0ec4b20a492062e452a36bcf2b22d72e7931c76113f"
+    },
+    {
+      "path": "engine/mirror.py",
+      "category": "same",
+      "sha256": "d40dd213142126c901e7d2fdf718c2eeece3c11be7927d147e92497631a2ad0e"
+    },
+    {
+      "path": "engine/practice.py",
+      "category": "same",
+      "sha256": "87126a08d9b994cc2a46e70cadcffa0e15460a16fae5e79b72f069e4619b559a"
+    },
+    {
+      "path": "engine/rules.py",
+      "category": "same",
+      "sha256": "6cc4a374137f74b48aa509ae1c26f7a6cfc665aea7a08b748cc4005a7aaf5235"
+    },
+    {
+      "path": "engine/server.py",
+      "category": "same",
+      "sha256": "9cb8ca013d99c9fe51b67768a98fec1474efea23d881e89280771f62cf82d489"
+    },
+    {
+      "path": "forge.py",
+      "category": "same",
+      "sha256": "8e312fa16797c4bbb8e5bdea3137a6487dc53e75c0c742c1441e58928c36acaf"
+    },
+    {
+      "path": "guide/GUIDE.md",
+      "category": "changed",
+      "sha256": "af2d9b3862b10b3441adedada77bbab96ccc19158c56d4983132794444686158"
+    },
+    {
+      "path": "guide/ProjectForge A Work Board For All Your Agents (Mac).pdf",
+      "category": "left out of the fingerprint"
+    },
+    {
+      "path": "guide/img/activity-folded.png",
+      "category": "same",
+      "sha256": "ab2d571754e3cda0f05d236cca9b6217c5893fa0f17f01e1a16dae1d22ebf5e7"
+    },
+    {
+      "path": "guide/img/agents.png",
+      "category": "same",
+      "sha256": "4d92db2a840546f8b9182ed4e478ce87907f03a4d63fc4dd33dd4da2da102177"
+    },
+    {
+      "path": "guide/img/before-you-start.png",
+      "category": "same",
+      "sha256": "cc05842ef101d3a6adaecae2ba1b36ff6c8356abc0835f664f8e081a15f48890"
+    },
+    {
+      "path": "guide/img/board.png",
+      "category": "same",
+      "sha256": "7cf49f4a8f7240f1cd5e8d047f9277d08821614ddf05ff4f5a5041fc10e0ef50"
+    },
+    {
+      "path": "guide/img/card-crm.png",
+      "category": "same",
+      "sha256": "b7b069a878ab10154a08c6a64daf65a8dca8b188e2a2a9a9dab7bc3185e099e5"
+    },
+    {
+      "path": "guide/img/card-handover.png",
+      "category": "same",
+      "sha256": "fbc5bf8c1ce27abb2f37ae3927350b21534e4549f2824985dfd3248a8a60d83b"
+    },
+    {
+      "path": "guide/img/card-life.png",
+      "category": "same",
+      "sha256": "e9e6681e0f48857f7d401a59cda4ff3b81af4c0290d6fa059a8fd9818c3bfcda"
+    },
+    {
+      "path": "guide/img/columns-reachable.png",
+      "category": "same",
+      "sha256": "63fab67dea00ad9b70f2d55613679aab5405d20ce545311b011f560f363b791f"
+    },
+    {
+      "path": "guide/img/crm-today.png",
+      "category": "same",
+      "sha256": "3565bf042061b7513e9b7715377292552e29e9a858b0fd74ec490572505bf164"
+    },
+    {
+      "path": "guide/img/download.png",
+      "category": "same",
+      "sha256": "1015072f7602faec87711f42f238c1d658237f3322cf102f75c4963dead8f8ea"
+    },
+    {
+      "path": "guide/img/files-map.png",
+      "category": "same",
+      "sha256": "3037a7a9d9b0bd6c3488dfab291d1616b81189658cc2384e995a1e4a95d81404"
+    },
+    {
+      "path": "guide/img/first-card.png",
+      "category": "same",
+      "sha256": "ba63c4cde7e3bff7c36f41540c0616417a1c11e2a63573fa347a992756b77f55"
+    },
+    {
+      "path": "guide/img/first-run.png",
+      "category": "same",
+      "sha256": "b4127be02f927b5a4d2606a07384c35f2aec0e4ead95653329d239e4870cd9ed"
+    },
+    {
+      "path": "guide/img/install-output.png",
+      "category": "same",
+      "sha256": "350dc4ee89389f49b145b896e3801b65e9429339af1e626ac1e4092320d50d50"
+    },
+    {
+      "path": "guide/img/mac-before-you-start.png",
+      "category": "changed",
+      "sha256": "419795217b44be4304e7d5c8082bf4a0a9344e02774cfe0844d7f6f6bd31b58b"
+    },
+    {
+      "path": "guide/img/mac-crm-today.png",
+      "category": "changed",
+      "sha256": "1bfe5c176553684b7ebefe7bf07441eaa2d39f3f701bfc5cd7ca12c0cf2a668e"
+    },
+    {
+      "path": "guide/img/mac-download.png",
+      "category": "changed",
+      "sha256": "9d92c5deb75bd8f0f9a49ffbe5798ba694ea151443ca925f9948edae23e6b134"
+    },
+    {
+      "path": "guide/img/mac-files-map.png",
+      "category": "changed",
+      "sha256": "2ac61f43b4d540bd72b94511f3ec909b81945ede1d2f3d11182e3c330b1c19e6"
+    },
+    {
+      "path": "guide/img/mac-first-card.png",
+      "category": "changed",
+      "sha256": "77c3b8671f888faa8d5e05f634775e4ce613bbae98fa481b2187b00e6b417f6f"
+    },
+    {
+      "path": "guide/img/mac-first-run.png",
+      "category": "changed",
+      "sha256": "5f08487d0653d0380ea4374c3cd65ddb3b7cb26809b8d67a2982cf2b6b5ce0a9"
+    },
+    {
+      "path": "guide/img/mac-install-output.png",
+      "category": "changed",
+      "sha256": "0fd7be621c82dceb7c800c1b9a8b7f7088ea9c2922ea620dd384ea915086b583"
+    },
+    {
+      "path": "guide/img/mac-no-vault.png",
+      "category": "changed",
+      "sha256": "980d660b94479e492e4e5a2e317b14ca79fc442db59c273b13e36ab9fa113e52"
+    },
+    {
+      "path": "guide/img/mac-port-in-use.png",
+      "category": "changed",
+      "sha256": "8ecb2164139f2d9ed5168cc78b5cd6f7527419f07a4511c8a7c6003f56f41fbb"
+    },
+    {
+      "path": "guide/img/mac-projects-terminal.png",
+      "category": "changed",
+      "sha256": "5583123aeaeed2b0ae753581214ba98cd1a26d9b6ac865c72a6b151d745ca237"
+    },
+    {
+      "path": "guide/img/mac-refusals.png",
+      "category": "changed",
+      "sha256": "e8d083d8ce25c71f26ecd618e20c627e903419d1c3c8e95452c5e8e5ff9c066d"
+    },
+    {
+      "path": "guide/img/mac-timer-cost.png",
+      "category": "changed",
+      "sha256": "aa52fe62e638ccfa7460be9f75ca98c77ee1720099d6a5a6be9d223cdcff7567"
+    },
+    {
+      "path": "guide/img/mac-unattended.png",
+      "category": "changed",
+      "sha256": "cbe871a275a51ddf13f1414a838549358ceddd1d15333d6238136b98406563a5"
+    },
+    {
+      "path": "guide/img/mac-writes-and-never-touches.png",
+      "category": "changed",
+      "sha256": "1b463da1f6362b46a28d095b48547a0af656399dcf507dcab4865fd530ab0e63"
+    },
+    {
+      "path": "guide/img/needs-you.png",
+      "category": "same",
+      "sha256": "de499973236b9b697ab8ab95837d7ff7dbba364df99a533cf2509d909678cd1b"
+    },
+    {
+      "path": "guide/img/no-vault.png",
+      "category": "same",
+      "sha256": "7b56eb7d4c3fde6ea17ceeb3c44697a8f279e62433d7f526938ecc716a592aee"
+    },
+    {
+      "path": "guide/img/original-agents.png",
+      "category": "same",
+      "sha256": "75be66ba1ebc45982084cb7b6b86d53c5ef8b00c207fbfa342f8bdead3c8c9f4"
+    },
+    {
+      "path": "guide/img/original-autonomy.png",
+      "category": "same",
+      "sha256": "33d6762bcc787c839c6ed141560d59e5a18914560917e4c0265d6ad5804a38ac"
+    },
+    {
+      "path": "guide/img/original-board.png",
+      "category": "same",
+      "sha256": "c0e16bbc2092b228a84baa0f1386c70bb8d28653c7ee9cd38fabed7f2f4335e2"
+    },
+    {
+      "path": "guide/img/original-card.png",
+      "category": "same",
+      "sha256": "b75b2268dca3e3768271b592277c910a8fbf0bc493d0ff411f79c9e9ae3bbcab"
+    },
+    {
+      "path": "guide/img/original-comms-mesh.png",
+      "category": "same",
+      "sha256": "3ec69122727e50392a623b286631952daf5819368be9ad767a0bf42b9195f120"
+    },
+    {
+      "path": "guide/img/port-in-use.png",
+      "category": "same",
+      "sha256": "bc16ab77a161a4ed9beb3bfecdd433a4876bce9fb054833d8c60f6c9a27a7688"
+    },
+    {
+      "path": "guide/img/projects-terminal.png",
+      "category": "same",
+      "sha256": "3a098e8aff64727950f3ff15992e5406d273e6103134486306c3544e7c957edb"
+    },
+    {
+      "path": "guide/img/queue.png",
+      "category": "same",
+      "sha256": "81a8aeb332e757fcad64466b2f7996d46afc9a71fa8ef584493d34374acd68b5"
+    },
+    {
+      "path": "guide/img/refusals.png",
+      "category": "same",
+      "sha256": "072186b196ba4c82970724bf0989667e74346a002316ca994064c5757e618ff2"
+    },
+    {
+      "path": "guide/img/refused-activity.png",
+      "category": "same",
+      "sha256": "694f81e91cac4a2eedbf80b749ee89110c3691627d63d2deb882333f06ab6ea0"
+    },
+    {
+      "path": "guide/img/rules.png",
+      "category": "same",
+      "sha256": "29cb8e963d02e799bcb94296b38fdc99ca3865ef03d1f3d3fd1c9fae9cea8647"
+    },
+    {
+      "path": "guide/img/search-no-hits.png",
+      "category": "same",
+      "sha256": "47d7283686b6046ce2a907fb52018071e37f2b6f165cab41ba15f5e519bf45fb"
+    },
+    {
+      "path": "guide/img/timer-cost.png",
+      "category": "same",
+      "sha256": "fd96f51006f9eb9fca339874cff0a6b4076821a9de458d60c89881ed1c547214"
+    },
+    {
+      "path": "guide/img/unattended.png",
+      "category": "same",
+      "sha256": "7eee49a763f6223f0ee8f8bb84039c2d7f5324d58aaae758e5a90d0b33e37457"
+    },
+    {
+      "path": "guide/img/writes-and-never-touches.png",
+      "category": "same",
+      "sha256": "80ca12dd596e1d7ee9899e1b20f126bd31fc35cf8042b0ed57dc968ad434feee"
+    },
+    {
+      "path": "install.py",
+      "category": "same",
+      "sha256": "87842d374fa0db539ab63c582a70583013df60c516125eb4ba305d7050d53b02"
+    },
+    {
+      "path": "tests/conftest.py",
+      "category": "same",
+      "sha256": "95eb2a9c850bda76df247c81d69ff0bf14224270a35c6c252f25bfe51254357f"
+    },
+    {
+      "path": "tests/mac/mac_board_names_python3.py",
+      "category": "same",
+      "sha256": "758345b2ebcc8dd946a1f3e0002cf6099b3516ae14a0758c38867ae7e4fa87a7"
+    },
+    {
+      "path": "tests/mac/mac_logon_plist.py",
+      "category": "same",
+      "sha256": "8eae8d2f216b2683b6a60efdb1d57273794ffad1d56b7f80db04f2ac22ba6828"
+    },
+    {
+      "path": "tests/mac/mac_printed_commands_python3.py",
+      "category": "same",
+      "sha256": "5ae972ee4e069034f10703421f03e30c54d763da91b595943b32e490d19325a5"
+    },
+    {
+      "path": "tests/mac/mac_server_starts_quickly.py",
+      "category": "same",
+      "sha256": "4342bdf17caec4f6cd2749f8b61600e50acd2975c960d40b768152790a4f91e2"
+    },
+    {
+      "path": "tests/mac/mac_vault_refusal_shown.py",
+      "category": "same",
+      "sha256": "693d915f3c0938d96d7131abc08c725fec96c8a84af51b11b77b8523873f23ff"
+    },
+    {
+      "path": "tests/test_fixes.py",
+      "category": "same",
+      "sha256": "5229a652e64f1d11883837ded671594edf6b815e3a8877c517bd92695020508b"
+    },
+    {
+      "path": "tests/test_fixes2.py",
+      "category": "same",
+      "sha256": "78fb7159e75d9326aee6ee2e0b194ccc3bd98d3feed5ceb9d6c45e8cca4ef795"
+    },
+    {
+      "path": "tests/test_fixes3.py",
+      "category": "same",
+      "sha256": "4584006ae00b55c3c1a86f27378341a1589afd1fa0f2bad204bb84e084a7cce9"
+    },
+    {
+      "path": "tests/test_install.py",
+      "category": "same",
+      "sha256": "2f34d8a67f0a1dce6594c25a440780d54e61392fa7bf3fee5c255deff6f0ae97"
+    },
+    {
+      "path": "tests/test_logon_and_stop.py",
+      "category": "same",
+      "sha256": "7602f1320c1629f218ff3863b5bc95d9116102962a90dfb0ace9f831d8c496c6"
+    },
+    {
+      "path": "tests/test_mac_and_names.py",
+      "category": "same",
+      "sha256": "48522ede863c80a43244d1331d19e8508dac4a9f8533b3d23f7e10348a9d346c"
+    },
+    {
+      "path": "tests/test_practice_copy.py",
+      "category": "same",
+      "sha256": "0d94428e5d79dfe6563a6b8999972bb9bec99a8a2eec852d32a85a19be844909"
+    },
+    {
+      "path": "tests/test_real_startup_untouched.py",
+      "category": "same",
+      "sha256": "e4a1bf54a64743e53e222a0939faf0330cd54a7ef02ecf9bea5106a5f15f4a82"
+    },
+    {
+      "path": "tests/test_rules.py",
+      "category": "same",
+      "sha256": "82ad30338d8381d3449a0874ecdcffbec5945e1e83b1524078d21e56caeecd3d"
+    },
+    {
+      "path": "tests/test_server_and_tools.py",
+      "category": "same",
+      "sha256": "53b177508d5d663353164588265614c593fa16e432187a1191c395b1050b18bc"
+    },
+    {
+      "path": "tests/test_store.py",
+      "category": "same",
+      "sha256": "04fd3343e41cb70d5b7ae3f83182e00d3bac67dfe8c58c051583fe5f96dc2e9d"
+    },
+    {
+      "path": "tools/demo_board.py",
+      "category": "same",
+      "sha256": "f03249d6a70c1cb3d91c84591a85bd717b4103338632eb367cd90cccc5f2d3ee"
+    },
+    {
+      "path": "tools/run_if_ready.py",
+      "category": "same",
+      "sha256": "96e556129a2542faddb4abf46c5ee2e707465c3848a3d7b3ca466c1917dacd17"
+    },
+    {
+      "path": "tools/schedule.py",
+      "category": "same",
+      "sha256": "927b5a939691a261e556625768ac365ac33d9365889b023dfc0f9d020b4e42e8"
+    },
+    {
+      "path": "viewer/app.js",
+      "category": "same",
+      "sha256": "c5c8bf1a135ed1e623d25fab5695348b039c6c2a33024f3f23977a519fb01bc4"
+    },
+    {
+      "path": "viewer/favicon.png",
+      "category": "same",
+      "sha256": "4830e18cd6024177774c10e4540f74165c6e19a50c4f3432b7d10c572afaf477"
+    },
+    {
+      "path": "viewer/index.html",
+      "category": "same",
+      "sha256": "0e052b0469180a9d61ef5ab54319dc3855a8750f4fc37b5de4732826b445625a"
+    },
+    {
+      "path": "viewer/style.css",
+      "category": "same",
+      "sha256": "4eb9b7467770f4bf105bae5b0031a56a291d6476160b2714813e770580f3b094"
+    }
+  ]
+}

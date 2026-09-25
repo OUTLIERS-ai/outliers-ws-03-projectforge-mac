@@ -1,0 +1,12 @@
+# your own settings and data never go into git
+config.json
+data/
+*.db
+*.db-wal
+*.db-shm
+*.tmp
+__pycache__/
+.pytest_cache/
+cards/*.json
+guide/*.html
+guide/*.pdf
